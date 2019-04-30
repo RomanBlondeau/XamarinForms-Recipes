@@ -157,4 +157,12 @@
       <Name>FinalProject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\FinalProject\Resources\cocktail.png">
+      <Link>Resources\cocktail.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\recipe.png">
+      <Link>Resources\recipe.png</Link>
+    </BundleResource>
+  </ItemGroup>
 </Project>
