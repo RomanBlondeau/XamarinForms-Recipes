@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace FinalProject
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
             InitializeComponent();
-            HandleRecipe();
-            HandleCocktail();
+            //HandleRecipe();
+            //HandleCocktail();
         }
 
         async void HandleRecipe()

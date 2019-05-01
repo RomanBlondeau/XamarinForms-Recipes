@@ -148,7 +148,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -156,5 +156,13 @@
       <Project>{DD03E3D7-3423-480D-B5BB-3E848B201494}</Project>
       <Name>FinalProject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\FinalProject\Resources\cocktail.png">
+      <Link>Resources\cocktail.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\recipe.png">
+      <Link>Resources\recipe.png</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>
