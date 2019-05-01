@@ -18,4 +18,9 @@
         Icon="cocktail.png"
         />
     
+    <local:FavoritesView
+        Title="Favorites"
+        Icon="favorites.png"
+        />
+    
 </TabbedPage>

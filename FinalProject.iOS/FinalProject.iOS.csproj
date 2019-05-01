@@ -164,5 +164,8 @@
     <BundleResource Include="..\FinalProject\Resources\recipe.png">
       <Link>Resources\recipe.png</Link>
     </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\favorites.png">
+      <Link>Resources\favorites.png</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>

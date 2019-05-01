@@ -88,6 +88,9 @@
     <AndroidResource Include="..\FinalProject\Resources\recipe.png">
       <Link>Resources\drawable\recipe.png</Link>
     </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\favorites.png">
+      <Link>Resources\drawable\favorites.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
