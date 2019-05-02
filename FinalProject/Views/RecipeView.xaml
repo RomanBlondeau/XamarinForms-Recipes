@@ -1,53 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true" 
-             xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
-             BackgroundColor="#fff"
+             xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject" 
+             BackgroundColor="#f2f2f2"
              x:Class="FinalProject.Views.RecipeView">
     
     <ContentPage.BindingContext>
-        <viewModels:RecipeViewModel/>
+        <viewModels:RecipeViewModel />
     </ContentPage.BindingContext>
-             
+    
     <ContentPage.Resources>
         <ResourceDictionary>
+            
             <Style x:Key="searchbarStyle" TargetType="SearchBar">
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="TextColor" Value="#bbbbbb" />
-                <Setter Property="BackgroundColor" Value="#fff" />
+                <Setter Property="BackgroundColor" Value="#f2f2f2" />
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="0" />
+                <Setter Property="Placeholder" Value="Search for recipes" />
             </Style>
+            
+            <Style x:Key="listViewStyle" TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="true" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="BackgroundColor" Value="#fff" />
+            </Style>            
+            
+            <Style x:Key="mainFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="20, 10" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="BackgroundColor" Value="#323232" />
+            </Style>
+            
+            <Style x:Key="listViewImagesStyle" TargetType="Image">
+                <Setter Property="Opacity" Value="0.4" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+            
+            <Style x:Key="mainLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="1" />
+                <Setter Property="Margin" Value="15, 5, 0, 5" />
+            </Style>
+            
+            <Style x:Key="listViewImagesLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="Margin" Value="15, 60, 5, 0" />
+            </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
-        
+    
     <ContentPage.Content>
-        <ListView 
-            x:Name="recipeListView" 
-            HasUnevenRows="true" 
-            SeparatorVisibility="None"
-            ItemsSource="{Binding _recipeListView}"
-            BackgroundColor="#EDE8E0">
+        <ListView x:Name="recipeListView" 
+                  ItemsSource="{Binding _recipeListView}" 
+                  Style="{StaticResource listViewStyle}">
+            
             <ListView.Header>
                 <StackLayout Orientation="Vertical">
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <SearchBar 
-                            x:Name="searchValue"
-                            Text="{Binding _search}"
-                            Placeholder="Search for recipes"
-                            SearchButtonPressed="HandleSearch"
-                            Style="{StaticResource searchbarStyle}">
+                        <SearchBar x:Name="searchValue" 
+                                   Text="{Binding _search}" 
+                                   SearchButtonPressed="HandleSearch" 
+                                   Style="{StaticResource searchbarStyle}">
                         </SearchBar>
+                        <Label Text="{Binding _mainLabel}"
+                               Style="{StaticResource mainLabelStyle}" />
+                        <ActivityIndicator Color="Black" 
+                                           IsRunning="true"
+                                           IsVisible="{Binding _activityIndicatorRunning}"
+                                           TranslationY="250"/>
                     </Grid>
                 </StackLayout>
             </ListView.Header>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame Style="{StaticResource mainFrameStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Image Source="{Binding Recipe.Image}" Style="{StaticResource listViewImagesStyle}" />
+                                    <Label Text="{Binding Recipe.Label}" Style="{StaticResource listViewImagesLabelStyle}" />
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
         </ListView>
     </ContentPage.Content>
-    
 </ContentPage>
