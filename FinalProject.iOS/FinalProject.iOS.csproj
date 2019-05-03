@@ -167,5 +167,17 @@
     <BundleResource Include="..\FinalProject\Resources\favorites.png">
       <Link>Resources\favorites.png</Link>
     </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\desserts.jpg">
+      <Link>Resources\desserts.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\chicken.jpg">
+      <Link>Resources\chicken.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\pasta.jpg">
+      <Link>Resources\pasta.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\soup.jpg">
+      <Link>Resources\soup.jpg</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>

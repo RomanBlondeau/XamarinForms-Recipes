@@ -91,6 +91,18 @@
     <AndroidResource Include="..\FinalProject\Resources\favorites.png">
       <Link>Resources\drawable\favorites.png</Link>
     </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\desserts.jpg">
+      <Link>Resources\drawable\desserts.jpg</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\chicken.jpg">
+      <Link>Resources\drawable\chicken.jpg</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\pasta.jpg">
+      <Link>Resources\drawable\pasta.jpg</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\soup.jpg">
+      <Link>Resources\drawable\soup.jpg</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

@@ -34,13 +34,38 @@
                 <Setter Property="CornerRadius" Value="5" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="20, 10" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="HasShadow" Value="true" />
+                <Setter Property="IsClippedToBounds" Value="true" />
                 <Setter Property="HeightRequest" Value="100" />
                 <Setter Property="BackgroundColor" Value="#323232" />
             </Style>
             
+            <Style x:Key="suggestionsFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="5, 5" />
+                <Setter Property="HasShadow" Value="true" />
+                <Setter Property="IsClippedToBounds" Value="true" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="BackgroundColor" Value="#323232" />
+            </Style>
+            
             <Style x:Key="listViewImagesStyle" TargetType="Image">
+                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+            
+            <Style x:Key="suggestionsLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="1" />
+                <Setter Property="Margin" Value="15, 5, 0, 5" />
+            </Style>
+            
+            <Style x:Key="suggestionsImagesStyle" TargetType="Image">
                 <Setter Property="Opacity" Value="0.4" />
                 <Setter Property="Aspect" Value="AspectFill" />
             </Style>
@@ -50,7 +75,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="#323232" />
                 <Setter Property="Grid.Column" Value="0" />
-                <Setter Property="Grid.Row" Value="1" />
+                <Setter Property="Grid.Row" Value="3" />
                 <Setter Property="Margin" Value="15, 5, 0, 5" />
             </Style>
             
@@ -59,6 +84,13 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="#fff" />
                 <Setter Property="Margin" Value="15, 60, 5, 0" />
+            </Style>
+            
+            <Style x:Key="suggestionsImagesLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="Margin" Value="15, 15, 15, 0" />
             </Style>
             
         </ResourceDictionary>
@@ -75,6 +107,8 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
@@ -84,8 +118,54 @@
                                    SearchButtonPressed="HandleSearch" 
                                    Style="{StaticResource searchbarStyle}">
                         </SearchBar>
+                        
+                        <Label Text="Suggestions"
+                               Style="{StaticResource suggestionsLabelStyle}" />
+                        
+                        
+                        <ScrollView 
+                            xmlns="http://xamarin.com/schemas/2014/forms" 
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                            x:Class="Silkweb.Mobile.Core.Views.ItemsView"
+                            Grid.Row="2" Grid.Column="0"
+                            Orientation="Horizontal">
+  
+                            <StackLayout x:Name="stackLayout" 
+                                         Orientation="Horizontal" 
+                                         Padding="0" Spacing="0" Margin="15, 0, 15, 0"
+                                         HorizontalOptions="FillAndExpand">
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="desserts.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                        <Label Text="Desserts" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="soup.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                        <Label Text="Soups" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="pasta.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                        <Label Text="Pastas" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="chicken.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                        <Label Text="Chicken" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                
+                            </StackLayout>
+
+                        </ScrollView>
+                        
                         <Label Text="{Binding _mainLabel}"
                                Style="{StaticResource mainLabelStyle}" />
+
                         <ActivityIndicator Color="Black" 
                                            IsRunning="true"
                                            IsVisible="{Binding _activityIndicatorRunning}"
