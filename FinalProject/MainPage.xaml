@@ -4,8 +4,8 @@
             xmlns:local="clr-namespace:FinalProject.Views"
             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
             ios:Page.UseSafeArea="true"
-            BarBackgroundColor="#fff"
-            BarTextColor="#323232"
+            BarBackgroundColor="#323232"
+            BarTextColor="#ffc32b"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom"
             x:Class="FinalProject.MainPage">

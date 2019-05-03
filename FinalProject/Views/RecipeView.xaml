@@ -4,7 +4,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true" 
              xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject" 
-             BackgroundColor="#f2f2f2"
+             BackgroundColor="#ffc32b"
              x:Class="FinalProject.Views.RecipeView">
     
     <ContentPage.BindingContext>
@@ -17,7 +17,7 @@
             <Style x:Key="searchbarStyle" TargetType="SearchBar">
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="TextColor" Value="#bbbbbb" />
-                <Setter Property="BackgroundColor" Value="#f2f2f2" />
+                <Setter Property="BackgroundColor" Value="#ffc32b" />
                 <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="0" />
@@ -27,11 +27,11 @@
             <Style x:Key="listViewStyle" TargetType="ListView">
                 <Setter Property="HasUnevenRows" Value="true" />
                 <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="BackgroundColor" Value="#fff" />
+                <Setter Property="BackgroundColor" Value="#323232" />
             </Style>            
             
             <Style x:Key="mainFrameStyle" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="CornerRadius" Value="15" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="Margin" Value="20, 10" />
                 <Setter Property="HasShadow" Value="true" />
@@ -52,14 +52,14 @@
             </Style>
             
             <Style x:Key="listViewImagesStyle" TargetType="Image">
-                <Setter Property="Opacity" Value="0.5" />
+                <Setter Property="Opacity" Value="0.7" />
                 <Setter Property="Aspect" Value="AspectFill" />
             </Style>
             
             <Style x:Key="suggestionsLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="TextColor" Value="#ffc32b" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="1" />
                 <Setter Property="Margin" Value="15, 5, 0, 5" />
@@ -73,7 +73,7 @@
             <Style x:Key="mainLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="TextColor" Value="#ffc32b" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="3" />
                 <Setter Property="Margin" Value="15, 5, 0, 5" />
@@ -91,6 +91,26 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="#fff" />
                 <Setter Property="Margin" Value="15, 15, 15, 0" />
+            </Style>
+            
+            <Style x:Key="suggestionsScrollViewStyle" TargetType="ScrollView">
+                <Setter Property="Grid.Row" Value="2" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            
+            <Style x:Key="suggestionsStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="15, 0, 15, 0" />
+                <Setter Property="Spacing" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            
+            <Style x:Key="activityIndicatorStyle" TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="White" />
+                <Setter Property="IsRunning" Value="True" />
+                <Setter Property="TranslationY" Value="250" />
             </Style>
             
         </ResourceDictionary>
@@ -113,6 +133,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+                        
                         <SearchBar x:Name="searchValue" 
                                    Text="{Binding _search}" 
                                    SearchButtonPressed="HandleSearch" 
@@ -123,17 +144,9 @@
                                Style="{StaticResource suggestionsLabelStyle}" />
                         
                         
-                        <ScrollView 
-                            xmlns="http://xamarin.com/schemas/2014/forms" 
-                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-                            x:Class="Silkweb.Mobile.Core.Views.ItemsView"
-                            Grid.Row="2" Grid.Column="0"
-                            Orientation="Horizontal">
+                        <ScrollView Style="{StaticResource suggestionsScrollViewStyle}">
   
-                            <StackLayout x:Name="stackLayout" 
-                                         Orientation="Horizontal" 
-                                         Padding="0" Spacing="0" Margin="15, 0, 15, 0"
-                                         HorizontalOptions="FillAndExpand">
+                            <StackLayout Style="{StaticResource suggestionsStackLayoutStyle}">
                                 <Frame Style="{StaticResource suggestionsFrameStyle}">
                                     <Grid>
                                         <Image Source="desserts.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
@@ -166,10 +179,8 @@
                         <Label Text="{Binding _mainLabel}"
                                Style="{StaticResource mainLabelStyle}" />
 
-                        <ActivityIndicator Color="Black" 
-                                           IsRunning="true"
-                                           IsVisible="{Binding _activityIndicatorRunning}"
-                                           TranslationY="250"/>
+                        <ActivityIndicator Style="{StaticResource activityIndicatorStyle}"
+                                           IsVisible="{Binding _activityIndicatorRunning}"/>
                     </Grid>
                 </StackLayout>
             </ListView.Header>
@@ -180,13 +191,6 @@
                         <ViewCell.View>
                             <Frame Style="{StaticResource mainFrameStyle}">
                                 <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    
                                     <Image Source="{Binding Recipe.Image}" Style="{StaticResource listViewImagesStyle}" />
                                     <Label Text="{Binding Recipe.Label}" Style="{StaticResource listViewImagesLabelStyle}" />
                                 </Grid>
