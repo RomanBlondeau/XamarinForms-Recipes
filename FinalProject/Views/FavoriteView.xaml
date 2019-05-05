@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    x:Class="FinalProject.Views.FavoriteView">
+    <ContentPage.BindingContext>
+        <viewModels:FavoriteViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Text="List of favorite" />
+            <ListView
+                x:Name="favoriteListView"
+                ItemsSource="{Binding FavoriteListView}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem
+                                    Text="Delete"
+                                    Clicked="Handle_Clicked_Remove"
+                                    IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <StackLayout
+                                BackgroundColor="#eee"
+                                Orientation="Vertical">
+                                <StackLayout
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="{Binding Name}"
+                                        TextColor="#f35e20" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Text="Ajouter un favori"
+                Clicked="Handle_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
