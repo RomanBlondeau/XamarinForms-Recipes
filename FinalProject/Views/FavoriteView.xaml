@@ -11,8 +11,6 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                Text="List of favorite" />
             <ListView
                 x:Name="favoriteListView"
                 ItemsSource="{Binding FavoriteListView}">
@@ -23,6 +21,7 @@
                                 <MenuItem
                                     Text="Delete"
                                     Clicked="Handle_Clicked_Remove"
+                                    CommandParameter="{Binding .}"
                                     IsDestructive="True" />
                             </ViewCell.ContextActions>
                             <StackLayout
@@ -30,6 +29,7 @@
                                 Orientation="Vertical">
                                 <StackLayout
                                     Orientation="Horizontal">
+                                    <Image x:Name="FavoriteImage" Source="{Binding PhotoUrl}" MinimumHeightRequest="20" MinimumWidthRequest="20"/>
                                     <Label
                                         Text="{Binding Name}"
                                         TextColor="#f35e20" />

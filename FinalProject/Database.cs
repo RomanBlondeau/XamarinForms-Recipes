@@ -19,7 +19,7 @@ namespace FinalProject
 
         public void InsertFavorite(Favorite favorite)
         {
-            database.Insert(favorite);
+            database.InsertOrReplace(favorite);
         }
 
         public void DeleteFavorite(string favoriteId)

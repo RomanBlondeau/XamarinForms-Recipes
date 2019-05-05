@@ -18,14 +18,22 @@ namespace FinalProject.ViewModels
             GetFavorite();
         }
 
-        void GetFavorite()
+        public void GetFavorite()
         {
             FavoriteListView = database.GetFavorite();
+            OnPropertyChanged("FavoriteListView");
         }
 
         public void InsertFavorite(Favorite fav)
         {
             database.InsertFavorite(fav);
+            GetFavorite();
+        }
+
+        public void DeleteFavorite(string favoriteId)
+        {
+            database.DeleteFavorite(favoriteId);
+            GetFavorite();
         }
 
         protected void OnPropertyChanged(string propertyName)
