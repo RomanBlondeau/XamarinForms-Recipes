@@ -51,7 +51,12 @@ namespace FinalProject.ViewModels
             OnPropertyChanged("_recipeImage");
         }
 
-        public Command HandleSearchCommand => new Command(async () => { 
+        public Command HandleSearchCommand => new Command(async (e) => {
+            if (e.ToString() != "search")
+            {
+                _search = e.ToString();
+                OnPropertyChanged("_search");
+            }
             await SearchRecipes();
         });
 

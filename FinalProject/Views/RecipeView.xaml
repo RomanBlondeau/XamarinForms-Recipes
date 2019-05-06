@@ -152,24 +152,44 @@
                                 <Frame Style="{StaticResource suggestionsFrameStyle}">
                                     <Grid>
                                         <Image Source="desserts.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleDessertsSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
                                         <Label Text="Desserts" Style="{StaticResource suggestionsImagesLabelStyle}" />
                                     </Grid>
                                 </Frame>
                                 <Frame Style="{StaticResource suggestionsFrameStyle}">
                                     <Grid>
                                         <Image Source="soup.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleSoupsSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
                                         <Label Text="Soups" Style="{StaticResource suggestionsImagesLabelStyle}" />
                                     </Grid>
                                 </Frame>
                                 <Frame Style="{StaticResource suggestionsFrameStyle}">
                                     <Grid>
                                         <Image Source="pasta.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandlePastasSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
                                         <Label Text="Pastas" Style="{StaticResource suggestionsImagesLabelStyle}" />
                                     </Grid>
                                 </Frame>
                                 <Frame Style="{StaticResource suggestionsFrameStyle}">
                                     <Grid>
                                         <Image Source="chicken.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleChickenSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
                                         <Label Text="Chicken" Style="{StaticResource suggestionsImagesLabelStyle}" />
                                     </Grid>
                                 </Frame>
