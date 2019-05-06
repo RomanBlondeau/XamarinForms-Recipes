@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FinalProject.ViewModels;
+using FinalProject.Models;
 
 using Xamarin.Forms;
 
@@ -22,7 +23,8 @@ namespace FinalProject.Views
 
         void HandleRecipeDetails(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new RecipeDetailsView());
+            var recipe = (Hit)((ListView)sender).SelectedItem;
+            Navigation.PushAsync(new RecipeDetailsView(recipe.Recipe));
         }
     }
 }
