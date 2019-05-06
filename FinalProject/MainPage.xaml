@@ -10,13 +10,20 @@
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     android:TabbedPage.ToolbarPlacement="Bottom"
     x:Class="FinalProject.MainPage">
-    <local:RecipeView
-        Title="Recipe"
-        Icon="recipe.png" />
+    
+    <NavigationPage Title="Recipe"
+                    Icon="recipe.png">
+        <x:Arguments>
+            <local:RecipeView />
+        </x:Arguments>
+    </NavigationPage>
+    
     <local:CocktailView
         Title="Cocktail"
         Icon="cocktail.png" />
+
     <local:FavoriteView
         Title="Favorites"
         Icon="favorites.png" />
+    
 </TabbedPage>

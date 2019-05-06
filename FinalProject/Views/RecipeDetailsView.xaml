@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             x:Class="FinalProject.Views.RecipeDetailsView">
+    
+    <ContentPage.BindingContext>
+        <viewModels:RecipeViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Image Source="{Binding _recipeImage}" HeightRequest="200" HorizontalOptions="CenterAndExpand" />
+            <Button Text="Add to fav" TextColor="Black" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

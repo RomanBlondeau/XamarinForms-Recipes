@@ -28,6 +28,9 @@ namespace FinalProject.ViewModels
         public string                               _mainLabel { get; set; }
         public bool                                 _activityIndicatorRunning { get; set; }
 
+        public RecipeClass                          _recipeDetails { get; set; }
+        public string                               _recipeImage { get; set; }
+
         public RecipeViewModel()
         {
             _viewModelInstance = this;
@@ -40,7 +43,17 @@ namespace FinalProject.ViewModels
             _ = SearchBestRecipes();
         }
 
-        public Command HandleSearchCommand => new Command(async () => { await SearchRecipes(); });
+        public void getRecipeDetails(RecipeClass recipe)
+        {
+            _recipeDetails = recipe;
+            _recipeImage = recipe.Image.ToString();
+
+            OnPropertyChanged("_recipeImage");
+        }
+
+        public Command HandleSearchCommand => new Command(async () => { 
+            await SearchRecipes();
+        });
 
         async Task SearchRecipes()
         {
