@@ -19,5 +19,10 @@ namespace FinalProject.Views
             var vm = BindingContext as RecipeViewModel;
             vm.HandleSearchCommand.Execute("search");
         }
+
+        void HandleRecipeDetails(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new RecipeDetailsView());
+        }
     }
 }

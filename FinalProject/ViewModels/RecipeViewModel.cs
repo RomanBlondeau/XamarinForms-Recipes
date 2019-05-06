@@ -40,7 +40,9 @@ namespace FinalProject.ViewModels
             _ = SearchBestRecipes();
         }
 
-        public Command HandleSearchCommand => new Command(async () => { await SearchRecipes(); });
+        public Command HandleSearchCommand => new Command(async () => { 
+            await SearchRecipes();
+        });
 
         async Task SearchRecipes()
         {

@@ -5,6 +5,7 @@
              ios:Page.UseSafeArea="true" 
              xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject" 
              BackgroundColor="#ffc32b"
+             NavigationPage.HasNavigationBar="false"
              x:Class="FinalProject.Views.RecipeView">
     
     <ContentPage.BindingContext>
@@ -118,7 +119,8 @@
     
     <ContentPage.Content>
         <ListView x:Name="recipeListView" 
-                  ItemsSource="{Binding _recipeListView}" 
+                  ItemsSource="{Binding _recipeListView}"
+                  ItemTapped="HandleRecipeDetails"
                   Style="{StaticResource listViewStyle}">
             
             <ListView.Header>
@@ -191,7 +193,8 @@
                         <ViewCell.View>
                             <Frame Style="{StaticResource mainFrameStyle}">
                                 <Grid>
-                                    <Image Source="{Binding Recipe.Image}" Style="{StaticResource listViewImagesStyle}" />
+                                    <Image Source="{Binding Recipe.Image}" 
+                                           Style="{StaticResource listViewImagesStyle}" />
                                     <Label Text="{Binding Recipe.Label}" Style="{StaticResource listViewImagesLabelStyle}" />
                                 </Grid>
                             </Frame>
