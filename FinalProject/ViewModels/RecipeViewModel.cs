@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http;
-using System.Windows.Input;
-using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using FinalProject.Models;
@@ -15,21 +12,22 @@ namespace FinalProject.ViewModels
 {
     public class RecipeViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler    PropertyChanged;
-        public static RecipeViewModel               _viewModelInstance;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public static RecipeViewModel _viewModelInstance;
+        Database database = new Database();
 
-        private string                              _appId = "&app_id=29e734df&app_key=dde9178172fd1f5797053d93a0d58b2b";
-        private string                              _apiAdress = "https://api.edamam.com/search?q=";
+        private string _appId = "&app_id=29e734df&app_key=dde9178172fd1f5797053d93a0d58b2b";
+        private string _apiAdress = "https://api.edamam.com/search?q=";
 
-        public List<Hit>                            _recipeListView { get; set; }
-        public string                               _loadingBackgroundColor { get; set; }
-        public string                               _loadingText { get; set; }
-        public string                               _search { get; set; }
-        public string                               _mainLabel { get; set; }
-        public bool                                 _activityIndicatorRunning { get; set; }
+        public List<Hit> _recipeListView { get; set; }
+        public string _loadingBackgroundColor { get; set; }
+        public string _loadingText { get; set; }
+        public string _search { get; set; }
+        public string _mainLabel { get; set; }
+        public bool _activityIndicatorRunning { get; set; }
 
-        public RecipeClass                          _recipeDetails { get; set; }
-        public string                               _recipeImage { get; set; }
+        public RecipeClass _recipeDetails { get; set; }
+        public string _recipeImage { get; set; }
 
         public RecipeViewModel()
         {
@@ -51,7 +49,8 @@ namespace FinalProject.ViewModels
             OnPropertyChanged("_recipeImage");
         }
 
-        public Command HandleSearchCommand => new Command(async () => { 
+        public Command HandleSearchCommand => new Command(async () =>
+        {
             await SearchRecipes();
         });
 
@@ -127,6 +126,16 @@ namespace FinalProject.ViewModels
                 _activityIndicatorRunning = false;
                 OnPropertyChanged("_activityIndicatorRunning");
             }
+        }
+
+        public void IsFavorite(String favoriteId)
+        {
+            database.CheckIsFavorite(favoriteId);
+        }
+
+        public void AddToFavorite(Favorite fav)
+        {
+            database.InsertFavorite(fav);
         }
 
         protected void OnPropertyChanged(string propertyName)

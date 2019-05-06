@@ -29,7 +29,7 @@ namespace FinalProject
 
         public bool CheckIsFavorite(string favoriteId)
         {
-            return database.Query<Favorite>("select * from favorite where id", favoriteId).Count > 0;
+            return database.Query<Favorite>("select * from Items where _id=?", favoriteId).Count > 0;
         }
 
         public List<Favorite> GetFavorite()

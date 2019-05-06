@@ -14,6 +14,13 @@ namespace FinalProject.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            var vm = BindingContext as FavoriteViewModel;
+            vm.GetFavorite();
+        }
+
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             Favorite fav = new Favorite();
