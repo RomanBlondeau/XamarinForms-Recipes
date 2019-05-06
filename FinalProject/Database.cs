@@ -27,6 +27,11 @@ namespace FinalProject
             database.Delete<Favorite>(favoriteId);
         }
 
+        public bool CheckIsFavorite(string favoriteId)
+        {
+            return database.Query<Favorite>("select * from favorite where id", favoriteId).Count > 0;
+        }
+
         public List<Favorite> GetFavorite()
         {
             return database.Table<Favorite>().ToList();

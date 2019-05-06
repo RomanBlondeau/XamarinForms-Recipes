@@ -11,7 +11,7 @@ namespace FinalProject.Views
         public RecipeView()
         {
             InitializeComponent();
-            BindingContext = RecipeViewModel._viewModelInstance;
+            var vm = BindingContext as FavoriteViewModel;
         }
 
         void HandleSearch(object sender, System.EventArgs e)

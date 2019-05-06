@@ -5,43 +5,77 @@
     xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true"
+    BackgroundColor="#ffc32b"
     x:Class="FinalProject.Views.FavoriteView">
     <ContentPage.BindingContext>
         <viewModels:FavoriteViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="titleLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="FontSize"
+                    Value="Medium" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="TextColor"
+                    Value="#ffc32b" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="0" />
+                <Setter
+                    Property="Grid.Row"
+                    Value="1" />
+                <Setter
+                    Property="Margin"
+                    Value="15, 5, 0, 5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <ListView
-                x:Name="favoriteListView"
-                ItemsSource="{Binding FavoriteListView}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem
-                                    Text="Delete"
-                                    Clicked="Handle_Clicked_Remove"
-                                    CommandParameter="{Binding .}"
-                                    IsDestructive="True" />
-                            </ViewCell.ContextActions>
+        <ListView
+            x:Name="favoriteListView"
+            ItemsSource="{Binding FavoriteListView}"
+            SeparatorVisibility="None"
+            BackgroundColor="#323232">
+            <ListView.Header>
+                <StackLayout>
+                    <Label
+                        Text="List of favorite"
+                        Style="{StaticResource titleLabelStyle}" />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Text="Delete"
+                                Clicked="Handle_Clicked_Remove"
+                                CommandParameter="{Binding .}"
+                                IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <ViewCell.View>
                             <StackLayout
-                                BackgroundColor="#eee"
-                                Orientation="Vertical">
-                                <StackLayout
-                                    Orientation="Horizontal">
-                                    <Image x:Name="FavoriteImage" Source="{Binding PhotoUrl}" MinimumHeightRequest="20" MinimumWidthRequest="20"/>
-                                    <Label
-                                        Text="{Binding Name}"
-                                        TextColor="#f35e20" />
-                                </StackLayout>
+                                Orientation="Horizontal"
+                                Margin="10, 10, 10, 10">
+                                <Image
+                                    x:Name="FavoriteImage"
+                                    Source="{Binding PhotoUrl}"
+                                    MinimumHeightRequest="20"
+                                    MinimumWidthRequest="20" />
+                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="#f35e20" />
                             </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button
-                Text="Ajouter un favori"
-                Clicked="Handle_Clicked" />
-        </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

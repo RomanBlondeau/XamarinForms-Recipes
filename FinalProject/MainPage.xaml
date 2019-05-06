@@ -16,7 +16,7 @@
     <local:CocktailView
         Title="Cocktail"
         Icon="cocktail.png" />
-    <local:FavoritesView
+    <local:FavoriteView
         Title="Favorites"
         Icon="favorites.png" />
 </TabbedPage>

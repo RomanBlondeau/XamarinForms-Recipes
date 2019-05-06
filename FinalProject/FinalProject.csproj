@@ -20,4 +20,10 @@
     <Folder Include="Resources\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\FavoritesView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\FavoritesView.xaml.cs" />
+  </ItemGroup>
 </Project>
