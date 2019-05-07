@@ -35,7 +35,8 @@ namespace FinalProject.Views
             {
                 Id = cocktails.IdDrink,
                 Name = cocktails.StrDrink,
-                PhotoUrl = cocktails.StrDrinkThumb.ToString()
+                PhotoUrl = cocktails.StrDrinkThumb.ToString(),
+                Type = "Cocktail"
             };
             vm.AddToFavorite(fav);
         }

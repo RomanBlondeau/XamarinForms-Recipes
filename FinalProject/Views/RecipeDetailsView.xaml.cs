@@ -33,7 +33,8 @@ namespace FinalProject.Views
             {
                 Id = recipe.Uri.ToString(),
                 Name = recipe.Label,
-                PhotoUrl = recipe.Image.ToString()
+                PhotoUrl = recipe.Image.ToString(),
+                Type = "Recipe"
             };
             vm.AddToFavorite(fav);
         }
