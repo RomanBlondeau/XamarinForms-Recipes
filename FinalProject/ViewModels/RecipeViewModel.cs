@@ -128,9 +128,9 @@ namespace FinalProject.ViewModels
             }
         }
 
-        public void IsFavorite(String favoriteId)
+        public bool IsFavorite(String favoriteId)
         {
-            database.CheckIsFavorite(favoriteId);
+            return database.CheckIsFavorite(favoriteId);
         }
 
         public void AddToFavorite(Favorite fav)

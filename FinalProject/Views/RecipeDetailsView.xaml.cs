@@ -23,16 +23,25 @@ namespace FinalProject.Views
             BindingContext = RecipeViewModel._viewModelInstance;
             var vm = BindingContext as RecipeViewModel;
             vm.getRecipeDetails(recipe);
-            vm.IsFavorite(recipe.Uri.ToString());
+            if (vm.IsFavorite(recipe.Uri.ToString()) == true)
+            {
+                FavoriteButton.Source = "fav.png";
+            }
+            else
+            {
+                FavoriteButton.Source = "fav_border.png";
+            }
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             var vm = BindingContext as RecipeViewModel;
-            var fav = new Favorite();
-            fav.Id = recipe.Uri.ToString();
-            fav.Name = recipe.Label;
-            fav.PhotoUrl = recipe.Image.ToString();
+            var fav = new Favorite
+            {
+                Id = recipe.Uri.ToString(),
+                Name = recipe.Label,
+                PhotoUrl = recipe.Image.ToString()
+            };
             vm.AddToFavorite(fav);
         }
     }

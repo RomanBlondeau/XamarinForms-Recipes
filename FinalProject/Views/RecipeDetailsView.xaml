@@ -17,6 +17,7 @@
                 HeightRequest="200"
                 HorizontalOptions="CenterAndExpand" />
             <ImageButton
+                x:Name="FavoriteButton"
                 Source="fav_border.png"
                 Clicked="Handle_Clicked" />
         </StackLayout>
