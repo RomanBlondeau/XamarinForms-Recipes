@@ -16,7 +16,6 @@ namespace FinalProject.ViewModels
         public static CocktailViewModel _viewModelInstance;
         Database database = new Database();
 
-        private string _apiAdress = "https://www.thecocktaildb.com/api/json/v1/1/filter.php";
         private string _apiAdressRecipe = "https://www.thecocktaildb.com/api/json/v1/1/search.php";
 
         public List<DrinkDetail> _cocktailsListView { get; set; }
@@ -30,10 +29,10 @@ namespace FinalProject.ViewModels
         public string _recipeImage { get; set; }
         public string _recipeTitle { get; set; }
         public string _recipeCategory { get; set; }
-        //public string _recipeLink { get; set; }
-        //public string _recipeCalories { get; set; }
-        //public List<string> _recipeHealthLabels { get; set; }
-        //public List<string> _recipeIngredients { get; set; }
+        public List<string> _recipeIngredients { get; set; }
+        public List<string> _recipeMeasures { get; set; }
+        public string _recipeInstructions { get; set; }
+        public string _recipeIsAlcoholic { get; set; }
 
         public CocktailViewModel()
         {
@@ -52,18 +51,67 @@ namespace FinalProject.ViewModels
             _recipeDetails = cocktail;
             _recipeImage = cocktail.StrDrinkThumb.ToString();
             _recipeTitle = cocktail.StrDrink;
-            _recipeCategory = cocktail.strCategory;
-            //_recipeLink = recipe.Url.ToString();
-            //_recipeHealthLabels = recipe.HealthLabels;
-            //_recipeIngredients = recipe.IngredientLines;
-            //_recipeCalories = recipe.Calories.ToString();
+            if (cocktail.strCategory != null)
+                _recipeCategory = cocktail.strCategory;
+            _recipeIngredients = new List<string>();
+            _recipeMeasures = new List<string>();
+
+            if (cocktail.strIngredient1 != null)
+            {
+                if (cocktail.strIngredient1 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient1);
+                if (cocktail.strIngredient2 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient2);
+                if (cocktail.strIngredient3 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient3);
+                if (cocktail.strIngredient4 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient4);
+                if (cocktail.strIngredient5 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient5);
+                if (cocktail.strIngredient6 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient6);
+                if (cocktail.strIngredient7 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient7);
+                if (cocktail.strIngredient8 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient8);
+                if (cocktail.strIngredient9 != "")
+                    _recipeIngredients.Add(cocktail.strIngredient9);
+            }
+            if (cocktail.strMeasure1 != null)
+            {
+                if (cocktail.strMeasure1 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure1);
+                if (cocktail.strMeasure2 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure2);
+                if (cocktail.strMeasure3 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure3);
+                if (cocktail.strMeasure4 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure4);
+                if (cocktail.strMeasure5 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure5);
+                if (cocktail.strMeasure6 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure6);
+                if (cocktail.strMeasure7 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure7);
+                if (cocktail.strMeasure8 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure8);
+                if (cocktail.strMeasure9 != "")
+                    _recipeMeasures.Add(cocktail.strMeasure9);
+            }
+
+            if (cocktail.strInstructions != null)
+                _recipeInstructions = cocktail.strInstructions;
+
+            if (cocktail.strAlcoholic != null)
+                _recipeIsAlcoholic = cocktail.strAlcoholic;
 
             OnPropertyChanged("_recipeImage");
             OnPropertyChanged("_recipeTitle");
-            OnPropertyChanged("_recipeAuthor");
-            OnPropertyChanged("_recipeHealthLabels");
             OnPropertyChanged("_recipeIngredients");
-            OnPropertyChanged("_recipeCalories");
+            OnPropertyChanged("_recipeCategory");
+            OnPropertyChanged("_recipeMeasures");
+            OnPropertyChanged("_recipeInstructions");
+            OnPropertyChanged("_recipeIsAlcoholic");
         }
 
         public Command HandleSearchCommand => new Command(async (e) => {
@@ -119,7 +167,7 @@ namespace FinalProject.ViewModels
         async Task GetBestRecipes()
         {
             var client = new HttpClient();
-            var apiAddress = _apiAdress + "?a=Alcoholic";
+            var apiAddress = _apiAdressRecipe + "?s=cocktail";
             var uri = new Uri(apiAddress);
 
             var response = await client.GetAsync(uri);

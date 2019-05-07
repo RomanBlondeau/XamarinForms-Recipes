@@ -36,9 +36,15 @@
             </Style>
             
             <Style x:Key="recipeTitleStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#ffc32b" />
+                <Setter Property="TextColor" Value="#08AEEA" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            
+            <Style x:Key="recipeIsAlcoholicStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#ff8e16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Small" />
             </Style>
             
             <Style x:Key="recipeAuthorStyle" TargetType="Label">
@@ -66,13 +72,16 @@
                 <Setter Property="Text" Value="Ingredients:" />
                 <Setter Property="Margin" Value="0, 10, 0, 0" />
                 <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Grid.Row" Value="0" />
+                <Setter Property="Grid.Column" Value="0" />
             </Style>
-            
-            <Style x:Key="healthLabelsLabelStyle" TargetType="Label">
+            <Style x:Key="measuresLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Text" Value="Health Labels:" />
+                <Setter Property="Text" Value="Measures:" />
                 <Setter Property="Margin" Value="0, 10, 0, 0" />
                 <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Grid.Row" Value="0" />
+                <Setter Property="Grid.Column" Value="1" />
             </Style>
             
             <Style x:Key="ingredientsFlowListViewStyle" TargetType="flv:FlowListView">
@@ -116,6 +125,21 @@
                 <Setter Property="Text" Value="Add to favorites" />
             </Style>
             
+            <Style x:Key="recipeInstructionsLabelStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="Margin" Value="0" />
+            </Style>
+            
+            <Style x:Key="recipeInstructionsStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="TextColor" Value="#323232" />
+                <Setter Property="Margin" Value="0, 0, 0, 15" />
+            </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -138,44 +162,64 @@
                 <StackLayout Orientation="Vertical">
                     <Label Text="{Binding _recipeTitle}" 
                            Style="{StaticResource recipeTitleStyle}" />
+                    <Label Text="{Binding _recipeIsAlcoholic}" 
+                           Style="{StaticResource recipeIsAlcoholicStyle}" />
                     <Label Text="{Binding _recipeCategory, StringFormat='Category: {0:N}'}" 
                            Style="{StaticResource recipeAuthorStyle}" />
                     
-<!--                    <Label Style="{StaticResource ingredientsLabelStyle}" />
-                    <StackLayout>
-                        <flv:FlowListView Style="{StaticResource ingredientsFlowListViewStyle}" 
-                                          FlowColumnCount="1"
-                                          FlowItemsSource="{Binding _recipeIngredients}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Style="{StaticResource ingredientsLabelStyle}" />
+                            <flv:FlowListView Style="{StaticResource ingredientsFlowListViewStyle}" 
+                                              FlowColumnCount="1"
+                                              FlowItemsSource="{Binding _recipeIngredients}">
 
-                            <flv:FlowListView.FlowColumnTemplate>
-                                <DataTemplate>
-                                    <Label Style="{StaticResource LabelFlowListStyle}"
-                                           Text="{Binding .}"/>
-                                </DataTemplate>
-                            </flv:FlowListView.FlowColumnTemplate>
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Label Style="{StaticResource LabelFlowListStyle}"
+                                               Text="{Binding .}"/>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
 
-                        </flv:FlowListView>
-                    </StackLayout>
+                            </flv:FlowListView>
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="1" Grid.Row="0">
+                        <Label Style="{StaticResource measuresLabelStyle}"  />
+                            <flv:FlowListView Style="{StaticResource ingredientsFlowListViewStyle}" 
+                                              FlowColumnCount="1"
+                                              FlowItemsSource="{Binding _recipeMeasures}">
 
-                    
-                    <Label Style="{StaticResource healthLabelsLabelStyle}" />
-                    <StackLayout>
-                        <flv:FlowListView Style="{StaticResource healthLabelsFlowListViewStyle}"
-                                          FlowColumnCount="3"
-                                          FlowItemsSource="{Binding _recipeHealthLabels}">
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Label Style="{StaticResource LabelFlowListStyle}"
+                                               Text="{Binding .}"/>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
 
-                            <flv:FlowListView.FlowColumnTemplate>
-                                <DataTemplate>
-                                    <Label Style="{StaticResource LabelFlowListStyle}"
-                                           Text="{Binding .}"/>
-                                </DataTemplate>
-                            </flv:FlowListView.FlowColumnTemplate>
-
-                        </flv:FlowListView>
-                    </StackLayout>
--->                    <Button
-                        Style="{StaticResource addFavButtonStyle}"
-                        Clicked="Handle_Clicked" />
+                            </flv:FlowListView>
+                            
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label Text="How to do it:" 
+                                    Style="{StaticResource recipeInstructionsLabelStyle}" />
+                            <Label Text="{Binding _recipeInstructions, StringFormat='{0:N}'}"
+                                   Style="{StaticResource recipeInstructionsStyle}" />
+                            <Button
+                                Style="{StaticResource addFavButtonStyle}"
+                                Clicked="Handle_Clicked" />
+                        </StackLayout>
+                    </Grid>
                 </StackLayout>
             </Frame>
         </Grid>
