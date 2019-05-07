@@ -33,6 +33,7 @@ namespace FinalProject.ViewModels
         public string                               _recipeTitle { get; set; }
         public string                               _recipeAuthor { get; set; }
         public string                               _recipeLink { get; set; }
+        public string                               _recipeCalories { get; set; }
         public List<string>                         _recipeHealthLabels { get; set; }
         public List<string>                         _recipeIngredients { get; set; }
 
@@ -57,12 +58,14 @@ namespace FinalProject.ViewModels
             _recipeLink = recipe.Url.ToString();
             _recipeHealthLabels = recipe.HealthLabels;
             _recipeIngredients = recipe.IngredientLines;
+            _recipeCalories = recipe.Calories.ToString();
 
             OnPropertyChanged("_recipeImage");
             OnPropertyChanged("_recipeTitle");
             OnPropertyChanged("_recipeAuthor");
             OnPropertyChanged("_recipeHealthLabels");
             OnPropertyChanged("_recipeIngredients");
+            OnPropertyChanged("_recipeCalories");
         }
 
         public Command HandleSearchCommand => new Command(async (e) => {
