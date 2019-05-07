@@ -11,16 +11,19 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     x:Class="FinalProject.MainPage">
     
-    <NavigationPage Title="Recipe"
+    <NavigationPage Title="Recipes"
                     Icon="recipe.png">
         <x:Arguments>
             <local:RecipeView />
         </x:Arguments>
     </NavigationPage>
     
-    <local:CocktailView
-        Title="Cocktail"
-        Icon="cocktail.png" />
+    <NavigationPage Title="Cocktails"
+                    Icon="cocktail.png">
+        <x:Arguments>
+            <local:CocktailView />
+        </x:Arguments>
+    </NavigationPage>
 
     <local:FavoriteView
         Title="Favorites"

@@ -115,6 +115,15 @@
     <AndroidResource Include="..\FinalProject\Resources\global.png">
       <Link>Resources\drawable\global.png</Link>
     </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\cosmo.jpg">
+      <Link>Resources\drawable\cosmo.jpg</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\gintonic.jpg">
+      <Link>Resources\drawable\gintonic.jpg</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\onthebeach.jpg">
+      <Link>Resources\drawable\onthebeach.jpg</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
