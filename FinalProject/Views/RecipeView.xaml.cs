@@ -21,6 +21,30 @@ namespace FinalProject.Views
             vm.HandleSearchCommand.Execute("search");
         }
 
+        void HandleDessertsSearch(object sender, System.EventArgs e)
+        {
+            var vm = BindingContext as RecipeViewModel;
+            vm.HandleSearchCommand.Execute("dessert");
+        }
+
+        void HandleSoupsSearch(object sender, System.EventArgs e)
+        {
+            var vm = BindingContext as RecipeViewModel;
+            vm.HandleSearchCommand.Execute("soup");
+        }
+
+        void HandlePastasSearch(object sender, System.EventArgs e)
+        {
+            var vm = BindingContext as RecipeViewModel;
+            vm.HandleSearchCommand.Execute("pasta");
+        }
+
+        void HandleChickenSearch(object sender, System.EventArgs e)
+        {
+            var vm = BindingContext as RecipeViewModel;
+            vm.HandleSearchCommand.Execute("chicken");
+        }
+
         void HandleRecipeDetails(object sender, System.EventArgs e)
         {
             var recipe = (Hit)((ListView)sender).SelectedItem;
