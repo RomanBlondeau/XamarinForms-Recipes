@@ -60,7 +60,7 @@
             <Style x:Key="suggestionsLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#ffc32b" />
+                <Setter Property="TextColor" Value="#08AEEA" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="1" />
                 <Setter Property="Margin" Value="15, 5, 0, 5" />
@@ -74,7 +74,7 @@
             <Style x:Key="mainLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#ffc32b" />
+                <Setter Property="TextColor" Value="#08AEEA" />
                 <Setter Property="Grid.Column" Value="0" />
                 <Setter Property="Grid.Row" Value="3" />
                 <Setter Property="Margin" Value="15, 5, 0, 5" />

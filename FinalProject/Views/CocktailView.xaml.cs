@@ -40,8 +40,8 @@ namespace FinalProject.Views
 
         void HandleRecipeDetails(object sender, System.EventArgs e)
         {
-            var recipe = (Cocktail)((ListView)sender).SelectedItem;
-            //Navigation.PushAsync(new RecipeDetailsView(recipe.Recipe));
+            var cocktail = (DrinkDetail)((ListView)sender).SelectedItem;
+            Navigation.PushAsync(new CocktailDetailsView(cocktail));
         }
     }
 }

@@ -26,14 +26,14 @@ namespace FinalProject.ViewModels
         public string _mainLabel { get; set; }
         public bool _activityIndicatorRunning { get; set; }
 
-        public RecipeClass _recipeDetails { get; set; }
+        public DrinkDetail _recipeDetails { get; set; }
         public string _recipeImage { get; set; }
         public string _recipeTitle { get; set; }
-        public string _recipeAuthor { get; set; }
-        public string _recipeLink { get; set; }
-        public string _recipeCalories { get; set; }
-        public List<string> _recipeHealthLabels { get; set; }
-        public List<string> _recipeIngredients { get; set; }
+        public string _recipeCategory { get; set; }
+        //public string _recipeLink { get; set; }
+        //public string _recipeCalories { get; set; }
+        //public List<string> _recipeHealthLabels { get; set; }
+        //public List<string> _recipeIngredients { get; set; }
 
         public CocktailViewModel()
         {
@@ -47,16 +47,16 @@ namespace FinalProject.ViewModels
             _ = SearchBestRecipes();
         }
 
-        public void getRecipeDetails(RecipeClass recipe)
+        public void getCocktailDetails(DrinkDetail cocktail)
         {
-            _recipeDetails = recipe;
-            _recipeImage = recipe.Image.ToString();
-            _recipeTitle = recipe.Label;
-            _recipeAuthor = recipe.Source;
-            _recipeLink = recipe.Url.ToString();
-            _recipeHealthLabels = recipe.HealthLabels;
-            _recipeIngredients = recipe.IngredientLines;
-            _recipeCalories = recipe.Calories.ToString();
+            _recipeDetails = cocktail;
+            _recipeImage = cocktail.StrDrinkThumb.ToString();
+            _recipeTitle = cocktail.StrDrink;
+            _recipeCategory = cocktail.strCategory;
+            //_recipeLink = recipe.Url.ToString();
+            //_recipeHealthLabels = recipe.HealthLabels;
+            //_recipeIngredients = recipe.IngredientLines;
+            //_recipeCalories = recipe.Calories.ToString();
 
             OnPropertyChanged("_recipeImage");
             OnPropertyChanged("_recipeTitle");
@@ -73,10 +73,6 @@ namespace FinalProject.ViewModels
                 OnPropertyChanged("_search");
             }
             await SearchRecipes();
-        });
-
-        public Command HandleRecipeLink => new Command(() => {
-            Device.OpenUri(new System.Uri(_recipeLink));
         });
 
         async Task SearchRecipes()
