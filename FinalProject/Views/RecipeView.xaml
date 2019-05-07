@@ -28,7 +28,7 @@
             <Style x:Key="listViewStyle" TargetType="ListView">
                 <Setter Property="HasUnevenRows" Value="true" />
                 <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="BackgroundColor" Value="#323232" />
+                <Setter Property="BackgroundColor" Value="#fff" />
             </Style>            
             
             <Style x:Key="mainFrameStyle" TargetType="Frame">
@@ -109,7 +109,7 @@
             </Style>
             
             <Style x:Key="activityIndicatorStyle" TargetType="ActivityIndicator">
-                <Setter Property="Color" Value="White" />
+                <Setter Property="Color" Value="#323232" />
                 <Setter Property="IsRunning" Value="True" />
                 <Setter Property="TranslationY" Value="250" />
             </Style>

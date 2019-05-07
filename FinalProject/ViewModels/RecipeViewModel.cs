@@ -30,6 +30,11 @@ namespace FinalProject.ViewModels
 
         public RecipeClass                          _recipeDetails { get; set; }
         public string                               _recipeImage { get; set; }
+        public string                               _recipeTitle { get; set; }
+        public string                               _recipeAuthor { get; set; }
+        public string                               _recipeLink { get; set; }
+        public List<string>                         _recipeHealthLabels { get; set; }
+        public List<string>                         _recipeIngredients { get; set; }
 
         public RecipeViewModel()
         {
@@ -47,8 +52,17 @@ namespace FinalProject.ViewModels
         {
             _recipeDetails = recipe;
             _recipeImage = recipe.Image.ToString();
+            _recipeTitle = recipe.Label;
+            _recipeAuthor = recipe.Source;
+            _recipeLink = recipe.Url.ToString();
+            _recipeHealthLabels = recipe.HealthLabels;
+            _recipeIngredients = recipe.IngredientLines;
 
             OnPropertyChanged("_recipeImage");
+            OnPropertyChanged("_recipeTitle");
+            OnPropertyChanged("_recipeAuthor");
+            OnPropertyChanged("_recipeHealthLabels");
+            OnPropertyChanged("_recipeIngredients");
         }
 
         public Command HandleSearchCommand => new Command(async (e) => {
@@ -58,6 +72,10 @@ namespace FinalProject.ViewModels
                 OnPropertyChanged("_search");
             }
             await SearchRecipes();
+        });
+
+        public Command HandleRecipeLink => new Command(() => {
+            Device.OpenUri(new System.Uri(_recipeLink));
         });
 
         async Task SearchRecipes()
@@ -131,6 +149,14 @@ namespace FinalProject.ViewModels
             {
                 _activityIndicatorRunning = false;
                 OnPropertyChanged("_activityIndicatorRunning");
+            }
+        }
+
+        protected void PropertiesChanged(string[] properties)
+        {
+            foreach(string p in properties)
+            {
+                OnPropertyChanged(p);
             }
         }
 
