@@ -8,6 +8,7 @@ namespace FinalProject.Views
     public partial class RecipeDetailsView : ContentPage
     {
         private RecipeClass recipe;
+
         public RecipeDetailsView()
         {
             InitializeComponent();

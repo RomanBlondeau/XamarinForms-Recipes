@@ -26,23 +26,18 @@ namespace FinalProject.Views
             BindingContext = CocktailViewModel._viewModelInstance;
             var vm = BindingContext as CocktailViewModel;
             vm.getCocktailDetails(cocktail);
-            //vm.IsFavorite(cocktail.Uri.ToString());
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)
         {
-            //    var vm = BindingContext as CocktailViewModel;
-            //    var fav = new Favorite();
-            //    fav.Id = recipe.Uri.ToString();
-            //    fav.Name = recipe.Label;
-            //    fav.PhotoUrl = recipe.Image.ToString();
-            //    vm.AddToFavorite(fav);
-            //}
-
-            //void HandleRecipeLink(object sender, System.EventArgs e)
-            //{
-            //    var vm = BindingContext as CocktailViewModel;
-            //    vm.HandleRecipeLink.Execute("viewRecipe");
+            var vm = BindingContext as CocktailViewModel;
+            var fav = new Favorite
+            {
+                Id = cocktails.IdDrink,
+                Name = cocktails.StrDrink,
+                PhotoUrl = cocktails.StrDrinkThumb.ToString()
+            };
+            vm.AddToFavorite(fav);
         }
     }
 }

@@ -1,227 +1,399 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="#fff"
-             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-             x:Class="FinalProject.Views.CocktailDetailsView">
-    
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="#fff"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    x:Class="FinalProject.Views.CocktailDetailsView">
     <ContentPage.BindingContext>
         <viewModels:CocktailViewModel />
     </ContentPage.BindingContext>
-    
     <ContentPage.Resources>
         <ResourceDictionary>
-            
-            <Style x:Key="recipeImageStyle" TargetType="Image">
-                <Setter Property="Grid.Row" Value="0" />
-                <Setter Property="Grid.RowSpan" Value="2" />
-                <Setter Property="Grid.Column" Value="0" />
-                <Setter Property="Aspect" Value="AspectFill" />
+            <Style
+                x:Key="recipeImageStyle"
+                TargetType="Image">
+                <Setter
+                    Property="Grid.Row"
+                    Value="0" />
+                <Setter
+                    Property="Grid.RowSpan"
+                    Value="2" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="0" />
+                <Setter
+                    Property="Aspect"
+                    Value="AspectFill" />
             </Style>
-            
-            <Style x:Key="detailsFrameStyle" TargetType="Frame">
-                <Setter Property="Grid.Row" Value="1" />
-                <Setter Property="Grid.RowSpan" Value="2" />
-                <Setter Property="Grid.Column" Value="0" />
-                <Setter Property="CornerRadius" Value="20" />
-                <Setter Property="BorderColor" Value="#fff" />
-                <Setter Property="Padding" Value="15, 20, 15, 0" />
-                <Setter Property="Margin" Value="0" />
-                <Setter Property="HasShadow" Value="true" />
-                <Setter Property="IsClippedToBounds" Value="true" />
-                <Setter Property="BackgroundColor" Value="#fff" />
+            <Style
+                x:Key="detailsFrameStyle"
+                TargetType="Frame">
+                <Setter
+                    Property="Grid.Row"
+                    Value="1" />
+                <Setter
+                    Property="Grid.RowSpan"
+                    Value="2" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="0" />
+                <Setter
+                    Property="CornerRadius"
+                    Value="20" />
+                <Setter
+                    Property="BorderColor"
+                    Value="#fff" />
+                <Setter
+                    Property="Padding"
+                    Value="15, 20, 15, 0" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
+                <Setter
+                    Property="HasShadow"
+                    Value="true" />
+                <Setter
+                    Property="IsClippedToBounds"
+                    Value="true" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#fff" />
             </Style>
-            
-            <Style x:Key="recipeTitleStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#08AEEA" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="Medium" />
+            <Style
+                x:Key="recipeTitleStyle"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="#08AEEA" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="Medium" />
             </Style>
-            
-            <Style x:Key="recipeIsAlcoholicStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#ff8e16" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="Small" />
+            <Style
+                x:Key="recipeIsAlcoholicStyle"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="#ff8e16" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
             </Style>
-            
-            <Style x:Key="recipeAuthorStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="FontSize" Value="Small" />
+            <Style
+                x:Key="recipeAuthorStyle"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
             </Style>
-            
-            <Style x:Key="recipeAccessButtonStyle" TargetType="Button">
-                <Setter Property="Text" Value="View recipe" />
-                <Setter Property="TextColor" Value="#fff" />
-                <Setter Property="Margin" Value="0, 0, 0, 10" />
-                <Setter Property="BackgroundColor" Value="#ffc32b" />
-                <Setter Property="VerticalOptions" Value="EndAndExpand" />
-                <Setter Property="Image" Value="global.png" />
+            <Style
+                x:Key="recipeAccessButtonStyle"
+                TargetType="Button">
+                <Setter
+                    Property="Text"
+                    Value="View recipe" />
+                <Setter
+                    Property="TextColor"
+                    Value="#fff" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 0, 0, 10" />
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#ffc32b" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="EndAndExpand" />
+                <Setter
+                    Property="Image"
+                    Value="global.png" />
             </Style>
-            
-            <Style x:Key="healthLabelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Text" Value="Health Labels:" />
-                <Setter Property="Margin" Value="0, 10, 0, 0" />
+            <Style
+                x:Key="healthLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Text"
+                    Value="Health Labels:" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 10, 0, 0" />
             </Style>
-            
-            <Style x:Key="ingredientsLabelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Text" Value="Ingredients:" />
-                <Setter Property="Margin" Value="0, 10, 0, 0" />
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="Grid.Row" Value="0" />
-                <Setter Property="Grid.Column" Value="0" />
+            <Style
+                x:Key="ingredientsLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Text"
+                    Value="Ingredients:" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 10, 0, 0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="Grid.Row"
+                    Value="0" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="0" />
             </Style>
-            <Style x:Key="measuresLabelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Text" Value="Measures:" />
-                <Setter Property="Margin" Value="0, 10, 0, 0" />
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="Grid.Row" Value="0" />
-                <Setter Property="Grid.Column" Value="1" />
+            <Style
+                x:Key="measuresLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Text"
+                    Value="Measures:" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 10, 0, 0" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="Grid.Row"
+                    Value="0" />
+                <Setter
+                    Property="Grid.Column"
+                    Value="1" />
             </Style>
-            
-            <Style x:Key="ingredientsFlowListViewStyle" TargetType="flv:FlowListView">
-                <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="HasUnevenRows" Value="false" />
-                <Setter Property="RowHeight" Value="25" />
-                <Setter Property="FlowColumnCount" Value="1" />
-                <Setter Property="VerticalOptions" Value="Start" />
+            <Style
+                x:Key="ingredientsFlowListViewStyle"
+                TargetType="flv:FlowListView">
+                <Setter
+                    Property="SeparatorVisibility"
+                    Value="None" />
+                <Setter
+                    Property="HasUnevenRows"
+                    Value="false" />
+                <Setter
+                    Property="RowHeight"
+                    Value="25" />
+                <Setter
+                    Property="FlowColumnCount"
+                    Value="1" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
             </Style>
-            
-            <Style x:Key="healthLabelsFlowListViewStyle" TargetType="flv:FlowListView">
-                <Setter Property="SeparatorVisibility" Value="None" />
-                <Setter Property="HasUnevenRows" Value="false" />
-                <Setter Property="RowHeight" Value="25" />
-                <Setter Property="FlowColumnCount" Value="1" />
-                <Setter Property="VerticalOptions" Value="Start" />
+            <Style
+                x:Key="healthLabelsFlowListViewStyle"
+                TargetType="flv:FlowListView">
+                <Setter
+                    Property="SeparatorVisibility"
+                    Value="None" />
+                <Setter
+                    Property="HasUnevenRows"
+                    Value="false" />
+                <Setter
+                    Property="RowHeight"
+                    Value="25" />
+                <Setter
+                    Property="FlowColumnCount"
+                    Value="1" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
             </Style>
-            
-            <Style x:Key="LabelFlowListStyle" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Fill" />
-                <Setter Property="VerticalOptions" Value="Fill" />
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="XAlign" Value="Start" />
-                <Setter Property="YAlign" Value="Center" />
-                <Setter Property="TextColor" Value="#323232" />
+            <Style
+                x:Key="LabelFlowListStyle"
+                TargetType="Label">
+                <Setter
+                    Property="HorizontalOptions"
+                    Value="Fill" />
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Fill" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+                <Setter
+                    Property="XAlign"
+                    Value="Start" />
+                <Setter
+                    Property="YAlign"
+                    Value="Center" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
             </Style>
-            
-            <Style x:Key="caloriesLabelStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Margin" Value="0, 0, 0, 15" />
+            <Style
+                x:Key="caloriesLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 0, 0, 15" />
             </Style>
-            
-            <Style x:Key="addFavButtonStyle" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#2AF598" />
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="TextColor" Value="#fff" />
-                <Setter Property="Margin" Value="0, 0, 0, 10" />
-                <Setter Property="Image" Value="like.png" />
-                <Setter Property="Text" Value="Add to favorites" />
+            <Style
+                x:Key="addFavButtonStyle"
+                TargetType="Button">
+                <Setter
+                    Property="BackgroundColor"
+                    Value="#2AF598" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+                <Setter
+                    Property="TextColor"
+                    Value="#fff" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 0, 0, 10" />
+                <Setter
+                    Property="Image"
+                    Value="like.png" />
+                <Setter
+                    Property="Text"
+                    Value="Add to favorites" />
             </Style>
-            
-            <Style x:Key="recipeInstructionsLabelStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Margin" Value="0" />
+            <Style
+                x:Key="recipeInstructionsLabelStyle"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="FontSize"
+                    Value="Medium" />
+                <Setter
+                    Property="FontAttributes"
+                    Value="Bold" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Margin"
+                    Value="0" />
             </Style>
-            
-            <Style x:Key="recipeInstructionsStyle" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Start" />
-                <Setter Property="FontSize" Value="Small" />
-                <Setter Property="TextColor" Value="#323232" />
-                <Setter Property="Margin" Value="0, 0, 0, 15" />
+            <Style
+                x:Key="recipeInstructionsStyle"
+                TargetType="Label">
+                <Setter
+                    Property="VerticalOptions"
+                    Value="Start" />
+                <Setter
+                    Property="FontSize"
+                    Value="Small" />
+                <Setter
+                    Property="TextColor"
+                    Value="#323232" />
+                <Setter
+                    Property="Margin"
+                    Value="0, 0, 0, 15" />
             </Style>
-            
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="200" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            
-            <Image Source="{Binding _recipeImage}" 
-                   Style="{StaticResource recipeImageStyle}"/>
-            
-            <Frame Style="{StaticResource detailsFrameStyle}">
-                <StackLayout Orientation="Vertical">
-                    <Label Text="{Binding _recipeTitle}" 
-                           Style="{StaticResource recipeTitleStyle}" />
-                    <Label Text="{Binding _recipeIsAlcoholic}" 
-                           Style="{StaticResource recipeIsAlcoholicStyle}" />
-                    <Label Text="{Binding _recipeCategory, StringFormat='Category: {0:N}'}" 
-                           Style="{StaticResource recipeAuthorStyle}" />
-                    
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <StackLayout Grid.Column="0" Grid.Row="0">
-                        <Label Style="{StaticResource ingredientsLabelStyle}" />
-                            <flv:FlowListView Style="{StaticResource ingredientsFlowListViewStyle}" 
-                                              FlowColumnCount="1"
-                                              FlowItemsSource="{Binding _recipeIngredients}">
-
+        <ScrollView>
+            <StackLayout
+                Orientation="Vertical">
+                <Image
+                    Source="{Binding _recipeImage}"
+                    Style="{StaticResource recipeImageStyle}" />
+                <Frame
+                    Style="{StaticResource detailsFrameStyle}">
+                    <StackLayout
+                        Orientation="Vertical">
+                        <Label
+                            Text="{Binding _recipeTitle}"
+                            Style="{StaticResource recipeTitleStyle}" />
+                        <Label
+                            Text="{Binding _recipeIsAlcoholic}"
+                            Style="{StaticResource recipeIsAlcoholicStyle}" />
+                        <Label
+                            Text="{Binding _recipeCategory, StringFormat='Category: {0:N}'}"
+                            Style="{StaticResource recipeAuthorStyle}" />
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="0">
+                            <Label
+                                Style="{StaticResource ingredientsLabelStyle}" />
+                            <flv:FlowListView
+                                FlowColumnCount="1"
+                                HeightRequest="100"
+                                HasUnevenRows="true"
+                                FlowItemsSource="{Binding _recipeIngredients}">
                                 <flv:FlowListView.FlowColumnTemplate>
                                     <DataTemplate>
-                                        <Label Style="{StaticResource LabelFlowListStyle}"
-                                               Text="{Binding .}"/>
+                                        <Label
+                                            Style="{StaticResource LabelFlowListStyle}"
+                                            Text="{Binding .}" />
                                     </DataTemplate>
                                 </flv:FlowListView.FlowColumnTemplate>
-
                             </flv:FlowListView>
                         </StackLayout>
-                        
-                        <StackLayout Grid.Column="1" Grid.Row="0">
-                        <Label Style="{StaticResource measuresLabelStyle}"  />
-                            <flv:FlowListView Style="{StaticResource ingredientsFlowListViewStyle}" 
-                                              FlowColumnCount="1"
-                                              FlowItemsSource="{Binding _recipeMeasures}">
-
+                        <StackLayout
+                            Grid.Column="1"
+                            Grid.Row="0">
+                            <Label
+                                Style="{StaticResource measuresLabelStyle}" />
+                            <flv:FlowListView
+                                FlowColumnCount="1"
+                                HeightRequest="100"
+                                HasUnevenRows="true"
+                                FlowItemsSource="{Binding _recipeMeasures}">
                                 <flv:FlowListView.FlowColumnTemplate>
                                     <DataTemplate>
-                                        <Label Style="{StaticResource LabelFlowListStyle}"
-                                               Text="{Binding .}"/>
+                                        <Label
+                                            Style="{StaticResource LabelFlowListStyle}"
+                                            Text="{Binding .}" />
                                     </DataTemplate>
                                 </flv:FlowListView.FlowColumnTemplate>
-
                             </flv:FlowListView>
-                            
                         </StackLayout>
-                        
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                        <Label Text="How to do it:" 
-                                    Style="{StaticResource recipeInstructionsLabelStyle}" />
-                            <Label Text="{Binding _recipeInstructions, StringFormat='{0:N}'}"
-                                   Style="{StaticResource recipeInstructionsStyle}" />
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2">
+                            <Label
+                                Text="How to do it:"
+                                Style="{StaticResource recipeInstructionsLabelStyle}" />
+                            <Label
+                                Text="{Binding _recipeInstructions, StringFormat='{0:N}'}"
+                                Style="{StaticResource recipeInstructionsStyle}" />
                             <Button
                                 Style="{StaticResource addFavButtonStyle}"
                                 Clicked="Handle_Clicked" />
                         </StackLayout>
-                    </Grid>
-                </StackLayout>
-            </Frame>
-        </Grid>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
