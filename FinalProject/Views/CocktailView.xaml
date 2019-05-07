@@ -1,5 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="FinalProject.Views.CocktailView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true" 
+             xmlns:viewModels="clr-namespace:FinalProject.ViewModels;assembly:FinalProject" 
+             BackgroundColor="#08AEEA"
+             NavigationPage.HasNavigationBar="false"
+             x:Class="FinalProject.Views.CocktailView">
+    
+    <ContentPage.BindingContext>
+        <viewModels:CocktailViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+            <Style x:Key="searchbarStyle" TargetType="SearchBar">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="#bbbbbb" />
+                <Setter Property="BackgroundColor" Value="#08AEEA" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="0" />
+                <Setter Property="Placeholder" Value="Search for cocktails" />
+            </Style>
+            
+            <Style x:Key="listViewStyle" TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="true" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="BackgroundColor" Value="#fff" />
+            </Style>            
+            
+            <Style x:Key="mainFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="20, 10" />
+                <Setter Property="HasShadow" Value="true" />
+                <Setter Property="IsClippedToBounds" Value="true" />
+                <Setter Property="HeightRequest" Value="100" />
+                <Setter Property="BackgroundColor" Value="#323232" />
+            </Style>
+            
+            <Style x:Key="suggestionsFrameStyle" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="5, 5" />
+                <Setter Property="HasShadow" Value="true" />
+                <Setter Property="IsClippedToBounds" Value="true" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="WidthRequest" Value="120" />
+                <Setter Property="BackgroundColor" Value="#323232" />
+            </Style>
+            
+            <Style x:Key="listViewImagesStyle" TargetType="Image">
+                <Setter Property="Opacity" Value="0.7" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+            
+            <Style x:Key="suggestionsLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#ffc32b" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="1" />
+                <Setter Property="Margin" Value="15, 5, 0, 5" />
+            </Style>
+            
+            <Style x:Key="suggestionsImagesStyle" TargetType="Image">
+                <Setter Property="Opacity" Value="0.4" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+            
+            <Style x:Key="mainLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#ffc32b" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Grid.Row" Value="3" />
+                <Setter Property="Margin" Value="15, 5, 0, 5" />
+            </Style>
+            
+            <Style x:Key="listViewImagesLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="Margin" Value="15, 60, 5, 0" />
+            </Style>
+            
+            <Style x:Key="suggestionsImagesLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#fff" />
+                <Setter Property="Margin" Value="15, 15, 15, 0" />
+            </Style>
+            
+            <Style x:Key="suggestionsScrollViewStyle" TargetType="ScrollView">
+                <Setter Property="Grid.Row" Value="2" />
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            
+            <Style x:Key="suggestionsStackLayoutStyle" TargetType="StackLayout">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="15, 0, 15, 0" />
+                <Setter Property="Spacing" Value="0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Orientation" Value="Horizontal" />
+            </Style>
+            
+            <Style x:Key="activityIndicatorStyle" TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="#323232" />
+                <Setter Property="IsRunning" Value="True" />
+                <Setter Property="TranslationY" Value="250" />
+            </Style>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <ListView x:Name="recipeListView" 
+                  ItemsSource="{Binding _cocktailsListView}"
+                  ItemTapped="HandleRecipeDetails"
+                  Style="{StaticResource listViewStyle}">
+            
+            <ListView.Header>
+                <StackLayout Orientation="Vertical">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <SearchBar x:Name="searchValue" 
+                                   Text="{Binding _search}" 
+                                   SearchButtonPressed="HandleSearch" 
+                                   Style="{StaticResource searchbarStyle}">
+                        </SearchBar>
+                        
+                        <Label Text="Suggestions"
+                               Style="{StaticResource suggestionsLabelStyle}" />
+                        
+                        
+                        <ScrollView Style="{StaticResource suggestionsScrollViewStyle}">
+  
+                            <StackLayout Style="{StaticResource suggestionsStackLayoutStyle}">
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="cosmo.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleCosmoSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        <Label Text="Cosmo" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="gintonic.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleGinSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        <Label Text="Gin" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource suggestionsFrameStyle}">
+                                    <Grid>
+                                        <Image Source="onthebeach.jpg" Style="{StaticResource suggestionsImagesStyle}"/>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="HandleBeachSearch"
+                                                    NumberOfTapsRequired="1" />
+                                            </Image.GestureRecognizers>
+                                        <Label Text="Orange" Style="{StaticResource suggestionsImagesLabelStyle}" />
+                                    </Grid>
+                                </Frame>
+                                
+                            </StackLayout>
+
+                        </ScrollView>
+                        
+                        <Label Text="{Binding _mainLabel}"
+                               Style="{StaticResource mainLabelStyle}" />
+
+                        <ActivityIndicator Style="{StaticResource activityIndicatorStyle}"
+                                           IsVisible="{Binding _activityIndicatorRunning}"/>
+                    </Grid>
+                </StackLayout>
+            </ListView.Header>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Frame Style="{StaticResource mainFrameStyle}">
+                                <Grid>
+                                    <Image Source="{Binding StrDrinkThumb}" 
+                                           Style="{StaticResource listViewImagesStyle}" />
+                                    <Label Text="{Binding StrDrink}" Style="{StaticResource listViewImagesLabelStyle}" />
+                                </Grid>
+                            </Frame>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

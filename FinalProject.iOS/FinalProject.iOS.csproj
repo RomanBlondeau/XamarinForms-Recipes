@@ -191,5 +191,14 @@
     <BundleResource Include="..\FinalProject\Resources\global.png">
       <Link>Resources\global.png</Link>
     </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\cosmo.jpg">
+      <Link>Resources\cosmo.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\gintonic.jpg">
+      <Link>Resources\gintonic.jpg</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\onthebeach.jpg">
+      <Link>Resources\onthebeach.jpg</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>
