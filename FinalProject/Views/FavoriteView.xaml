@@ -32,20 +32,35 @@
                     Value="1" />
                 <Setter
                     Property="Margin"
-                    Value="15, 5, 0, 5" />
+                    Value="15, 20, 0, 5" />
             </Style>
+            <Style x:Key="favoriteListViewStyle" TargetType="ListView">
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="BackgroundColor" Value="#fff" />
+            </Style>
+            <Style x:Key="stackListViewStyle" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Margin" Value="10,10,10,10" />
+            </Style>
+            <Style x:Key="imageListViewStyle" TargetType="Image">
+                <Setter Property="MinimumHeightRequest" Value="30" />
+                <Setter Property="MinimumWidthRequest" Value="30" />
+            </Style>
+            <Style x:Key="imageLabelListViewStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#323232" />
+            </Style>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ListView
             x:Name="favoriteListView"
             ItemsSource="{Binding FavoriteListView}"
-            SeparatorVisibility="None"
-            BackgroundColor="#323232">
+            Style="{StaticResource favoriteListViewStyle}">
             <ListView.Header>
                 <StackLayout>
                     <Label
-                        Text="List of favorite"
+                        Text="List of favorites :"
                         Style="{StaticResource titleLabelStyle}" />
                 </StackLayout>
             </ListView.Header>
@@ -61,16 +76,14 @@
                         </ViewCell.ContextActions>
                         <ViewCell.View>
                             <StackLayout
-                                Orientation="Horizontal"
-                                Margin="10, 10, 10, 10">
+                                Style="{StaticResource stackListViewStyle}">
                                 <Image
                                     x:Name="FavoriteImage"
                                     Source="{Binding PhotoUrl}"
-                                    MinimumHeightRequest="20"
-                                    MinimumWidthRequest="20" />
+                                    Style="{StaticResource imageListViewStyle}" />
                                 <Label
                                     Text="{Binding Name}"
-                                    TextColor="#f35e20" />
+                                    Style="{StaticResource imageLabelListViewStyle}" />
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
