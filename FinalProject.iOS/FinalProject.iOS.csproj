@@ -153,7 +153,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\FinalProject\FinalProject.csproj">
-      <Project>{360D7A99-9DD1-49EC-BC69-BC0E53EA9FC4}</Project>
+      <Project>{DD03E3D7-3423-480D-B5BB-3E848B201494}</Project>
       <Name>FinalProject</Name>
     </ProjectReference>
   </ItemGroup>
@@ -184,6 +184,12 @@
     </BundleResource>
     <BundleResource Include="..\FinalProject\Resources\fav_border.png">
       <Link>Resources\fav_border.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\like.png">
+      <Link>Resources\like.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\FinalProject\Resources\global.png">
+      <Link>Resources\global.png</Link>
     </BundleResource>
   </ItemGroup>
 </Project>

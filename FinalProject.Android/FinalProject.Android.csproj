@@ -109,6 +109,12 @@
     <AndroidResource Include="..\FinalProject\Resources\fav_border.png">
       <Link>Resources\drawable\fav_border.png</Link>
     </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\like.png">
+      <Link>Resources\drawable\like.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\FinalProject\Resources\global.png">
+      <Link>Resources\drawable\global.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -119,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinalProject\FinalProject.csproj">
-      <Project>{360D7A99-9DD1-49EC-BC69-BC0E53EA9FC4}</Project>
+      <Project>{DD03E3D7-3423-480D-B5BB-3E848B201494}</Project>
       <Name>FinalProject</Name>
     </ProjectReference>
   </ItemGroup>

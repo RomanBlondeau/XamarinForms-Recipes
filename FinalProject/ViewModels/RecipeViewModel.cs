@@ -26,8 +26,14 @@ namespace FinalProject.ViewModels
         public string _mainLabel { get; set; }
         public bool _activityIndicatorRunning { get; set; }
 
-        public RecipeClass _recipeDetails { get; set; }
-        public string _recipeImage { get; set; }
+        public RecipeClass                          _recipeDetails { get; set; }
+        public string                               _recipeImage { get; set; }
+        public string                               _recipeTitle { get; set; }
+        public string                               _recipeAuthor { get; set; }
+        public string                               _recipeLink { get; set; }
+        public string                               _recipeCalories { get; set; }
+        public List<string>                         _recipeHealthLabels { get; set; }
+        public List<string>                         _recipeIngredients { get; set; }
 
         public RecipeViewModel()
         {
@@ -45,13 +51,32 @@ namespace FinalProject.ViewModels
         {
             _recipeDetails = recipe;
             _recipeImage = recipe.Image.ToString();
+            _recipeTitle = recipe.Label;
+            _recipeAuthor = recipe.Source;
+            _recipeLink = recipe.Url.ToString();
+            _recipeHealthLabels = recipe.HealthLabels;
+            _recipeIngredients = recipe.IngredientLines;
+            _recipeCalories = recipe.Calories.ToString();
 
             OnPropertyChanged("_recipeImage");
+            OnPropertyChanged("_recipeTitle");
+            OnPropertyChanged("_recipeAuthor");
+            OnPropertyChanged("_recipeHealthLabels");
+            OnPropertyChanged("_recipeIngredients");
+            OnPropertyChanged("_recipeCalories");
         }
 
-        public Command HandleSearchCommand => new Command(async () =>
-        {
+        public Command HandleSearchCommand => new Command(async (e) => {
+            if (e.ToString() != "search")
+            {
+                _search = e.ToString();
+                OnPropertyChanged("_search");
+            }
             await SearchRecipes();
+        });
+
+        public Command HandleRecipeLink => new Command(() => {
+            Device.OpenUri(new System.Uri(_recipeLink));
         });
 
         async Task SearchRecipes()
@@ -128,9 +153,17 @@ namespace FinalProject.ViewModels
             }
         }
 
-        public bool IsFavorite(String favoriteId)
+        protected void PropertiesChanged(string[] properties)
         {
-            return database.CheckIsFavorite(favoriteId);
+            foreach(string p in properties)
+            {
+                OnPropertyChanged(p);
+            }
+        }
+
+        public void IsFavorite(String favoriteId)
+        {
+            database.CheckIsFavorite(favoriteId);
         }
 
         public void AddToFavorite(Favorite fav)
