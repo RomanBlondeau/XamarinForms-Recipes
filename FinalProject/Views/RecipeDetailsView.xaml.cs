@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DLToolkit.Forms.Controls;
+﻿using DLToolkit.Forms.Controls;
 using FinalProject.Models;
 using FinalProject.ViewModels;
 using Xamarin.Forms;
@@ -25,14 +23,6 @@ namespace FinalProject.Views
             BindingContext = RecipeViewModel._viewModelInstance;
             var vm = BindingContext as RecipeViewModel;
             vm.getRecipeDetails(recipe);
-            if (vm.IsFavorite(recipe.Uri.ToString()) == true)
-            {
-                FavoriteButton.Source = "fav.png";
-            }
-            else
-            {
-                FavoriteButton.Source = "fav_border.png";
-            }
         }
 
         void Handle_Clicked(object sender, System.EventArgs e)
