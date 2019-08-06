@@ -16,7 +16,7 @@ namespace FinalProject.ViewModels
         public static RecipeViewModel _viewModelInstance;
         Database database = new Database();
 
-        private string _appId = "&app_id=29e734df&app_key=dde9178172fd1f5797053d93a0d58b2b";
+        private string _appId = "&app_id=29e734df&app_key="; // add app_key
         private string _apiAdress = "https://api.edamam.com/search?q=";
 
         public List<Hit> _recipeListView { get; set; }
